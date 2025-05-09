@@ -1,4 +1,4 @@
-# CS551P_Assignment_3
+# CS551P_Assignment_3 – World Cities Flask App 🌍
 
 ## What is this?
 
