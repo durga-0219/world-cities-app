@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  .glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(8px);
+    padding: 2rem;
+  }
+  .form-label {
+    font-weight: 500;
+  }
+</style>
+
+<div class="d-flex justify-content-center mt-5 mb-5">
+  <div class="glass-card text-center w-100" style="max-width: 600px;">
+
+    <h2 class="mb-3 fw-bold text-primary">
+      🌍 Explore Cities by Country
+    </h2>
+    <p class="text-muted mb-4">Choose a country below to view all its cities and their population info.</p>
+
+    <form method="GET" action="/country">
+      <div class="mb-3 text-start">
+        <label for="countryDropdown" class="form-label">Select a Country:</label>
+        <select name="country_id" id="countryDropdown" class="form-select" required>
+          <option value="" disabled selected>🌐 Select a country...</option>
+          {% for country in countries %}
+            <option value="{{ country.id }}">{{ country.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <button type="submit" class="btn btn-outline-primary w-100">
+        🚀 Show Cities
+      </button>
+    </form>
+
+  </div>
+</div>
+{% endblock %}

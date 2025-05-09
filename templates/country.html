@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  .glass-card {
+    background: #ffffffcc;
+    border-radius: 1rem;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    padding: 2.5rem 2rem;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .city-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #0077b6;
+  }
+
+  .list-group-item {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .badge-pop {
+    background: linear-gradient(90deg, #3a86ff, #8338ec);
+    font-size: 0.9rem;
+    padding: 0.5em 0.75em;
+    color: white;
+  }
+
+  .back-btn {
+    font-weight: 600;
+    border-radius: 8px;
+    box-shadow: 0 0 0 2px #0077b6;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .back-btn:hover {
+    background: #0077b6;
+    color: white;
+  }
+</style>
+
+<div class="container my-5">
+  <div class="text-center mb-4">
+    <a class="btn btn-outline-primary back-btn" href="/">🔙 Back to All Countries</a>
+  </div>
+
+  <div class="glass-card mx-auto" style="max-width: 750px;">
+    <h2 class="text-center mb-4 city-title">
+      🏙️ Cities in {{ country.name }}
+    </h2>
+
+    {% if country.cities %}
+    <ul class="list-group">
+      {% for city in country.cities %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          🏘️ {{ city.name }}
+          <span class="badge badge-pop rounded-pill">Population: {{ city.population }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="text-muted text-center">No cities found for this country.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
